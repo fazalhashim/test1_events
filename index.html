@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event Handeler</title>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript">
+    //cordova plugin add cordova-plugin-battery
+    //cordova plugin add cordova-plugin-network-information
+
+    //document.addEventListener("event_name",CallBackFunction,false);
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        alert("deviceready");
+            document.addEventListener("pause", onPause, false);
+            document.addEventListener("resume", onResume, false);
+            document.addEventListener("backbutton", onBackKeyDown, false);
+
+            document.addEventListener("volumedownbutton", onVolumeDownKeyDown, false);
+            document.addEventListener("volumeupbutton", onVolumeUpKeyDown, false);
+
+            //network based event listeners
+            document.addEventListener("online", chkOnline, false);
+            document.addEventListener("offline", chkOffline, false);
+
+            //battery based event listeners
+            window.addEventListener("batterycritical", bCritical, false);
+            window.addEventListener("batterylow", bLow, false);
+            window.addEventListener("batterystatus", bStatus, false);
+
+    }
+
+    function onPause() {
+        alert("pause Event Accured");
+    }
+
+    function onResume() {
+        alert("Resume Event Accoured");
+    }
+
+    function onBackKeyDown() {
+        alert("back button pressed");
+    }
+
+    function onMenuKeyDown() {
+        alert("menubutton pressed");
+    }
+
+    function onVolumeDownKeyDown() {
+        alert("Volume Down button pressed");
+    }
+
+    function onVolumeUpKeyDown() {
+        alert("Volume Up button pressed");
+    }
+    // Network info
+    function chkOnline() {
+        alert("You're in online");
+    }
+
+    function chkOffline() {
+        alert("You're in offline");
+    }
+    //battery
+    function bCritical() {
+        alert("Your batty in Critical");
+    }
+
+    function bLow() {
+        alert("Your battry in low");
+    }
+
+    function bStatus(info) {
+        alert("Battery Level is" + info.level + " isCharged ? :" + info.isPlugged);
+    }
+
+    </script>
+</head>
+
+<body>
+    <h1>Phonegap Events Example</h1>
+</body>
+
+</html>
